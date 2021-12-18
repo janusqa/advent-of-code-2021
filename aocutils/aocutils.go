@@ -22,6 +22,8 @@ func GetInputFromFile(filename string) []string {
 		os.Exit(1)
 	}
 
+	defer file.Close()
+
 	// The bufio.NewScanner() function is called in which the
 	// object os.File passed as its parameter and this returns a
 	// object bufio.Scanner which is further used on the
@@ -38,7 +40,6 @@ func GetInputFromFile(filename string) []string {
 	for scanner.Scan() {
 		input = append(input, scanner.Text())
 	}
-	file.Close()
 
 	return input
 }
