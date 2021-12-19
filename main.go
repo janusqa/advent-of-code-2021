@@ -1,8 +1,7 @@
 package main
 
 import (
-	"adventofcode/day3"
-	"fmt"
+	"adventofcode/day4"
 )
 
 func main() {
@@ -17,6 +16,8 @@ func main() {
 
 	// *** Day 3
 	// result := day3.GetPowerConsumption("./day3/input_test.txt")
-	result := day3.GetLifeSupportRating("./day3/input.txt")
-	fmt.Printf("%d\n", result)
+	// fmt.Printf("%d\n", result)
+
+	// *** Day 4
+	day4.Zeus("./day4/input_test.txt")
 }
