@@ -19,5 +19,5 @@ func main() {
 	// fmt.Printf("%d\n", result)
 
 	// *** Day 4
-	day4.Zeus("./day4/input_test.txt")
+	day4.BingoSubsystem("./day4/input_test.txt")
 }
