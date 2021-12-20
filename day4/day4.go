@@ -2,7 +2,6 @@ package day4
 
 import (
 	"adventofcode/aocutils"
-	"adventofcode/day4/bingoboard"
 	"bufio"
 	"fmt"
 	"log"
@@ -12,7 +11,7 @@ import (
 
 type bingoGame struct {
 	draws  []int
-	boards []bingoboard.BingoBoard
+	boards []bingoBoard
 }
 
 func getBingoGame(filename string, bingo *bingoGame) {
@@ -63,7 +62,7 @@ func getBingoGame(filename string, bingo *bingoGame) {
 			(*bingo).boards[boardNumber] = append((*bingo).boards[boardNumber], row)
 			rowNum++
 		} else {
-			(*bingo).boards = append((*bingo).boards, bingoboard.BingoBoard{})
+			(*bingo).boards = append((*bingo).boards, bingoBoard{})
 			rowNum = 0
 			if lineNumber > 1 {
 				boardNumber++
@@ -80,13 +79,13 @@ func BingoSubsystem(filename string) {
 	getBingoGame(filename, &bingo)
 	for _, draw := range bingo.draws {
 		for i, board := range bingo.boards {
-			if !board.Skip(i, wins) {
-				board.Mark(draw)
-				if board.Wins() {
+			if !board.skip(i, wins) {
+				board.mark(draw)
+				if board.wins() {
 					// fmt.Println(board.score(draw))
 					wins = append(wins, i)
 					if len(wins) == len(bingo.boards) {
-						fmt.Println(board.Score(draw))
+						fmt.Println(board.score(draw))
 						return
 					}
 				}

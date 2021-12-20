@@ -1,8 +1,8 @@
-package bingoboard
+package day4
 
-type BingoBoard [][]int
+type bingoBoard [][]int
 
-func (b BingoBoard) Mark(draw int) {
+func (b bingoBoard) mark(draw int) {
 	for _, row := range b {
 		for j, col := range row {
 			if col == draw {
@@ -12,7 +12,7 @@ func (b BingoBoard) Mark(draw int) {
 	}
 }
 
-func (b BingoBoard) Wins() bool {
+func (b bingoBoard) wins() bool {
 
 	rowCheck := 0
 	colCheck := 0
@@ -49,7 +49,7 @@ func (b BingoBoard) Wins() bool {
 	return false
 }
 
-func (b BingoBoard) Score(draw int) int {
+func (b bingoBoard) score(draw int) int {
 	unmarkedSum := 0
 
 	for row := 0; row < len(b); row++ {
@@ -62,7 +62,7 @@ func (b BingoBoard) Score(draw int) int {
 	return unmarkedSum * draw
 }
 
-func (BingoBoard) Skip(board int, winningBoards []int) bool {
+func (bingoBoard) skip(board int, winningBoards []int) bool {
 	for _, winningBoard := range winningBoards {
 		if board == winningBoard {
 			return true
