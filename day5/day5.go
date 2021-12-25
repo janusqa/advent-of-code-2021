@@ -50,14 +50,6 @@ func getHydrothermalReadings(filename string) []line_segment {
 	return reading
 }
 
-// func plot(ls line_segment) {
-// 	for _, point := range ls {
-
-// 		fmt.Println(len(display[point.y]))
-
-// 	}
-// }
-
 func (s *screen) on(reading []line_segment) {
 	max_rows := 0
 	max_cols := 0
@@ -104,12 +96,12 @@ func (s *screen) warn() int {
 	return alert
 }
 
-func (s *screen) print() {
-	for _, row := range *s {
-		fmt.Println(row)
-	}
-	fmt.Println()
-}
+// func (s *screen) print() {
+// 	for _, row := range *s {
+// 		fmt.Println(row)
+// 	}
+// 	fmt.Println()
+// }
 
 func ls(reading string) line_segment {
 
