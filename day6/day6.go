@@ -10,16 +10,11 @@ type stateTable [9]int
 
 func LanternFishModel(filename string, days int) {
 	input := aocutils.GetInputFromFile(filename)
-	readingStr := strings.Split(input[0], ",")
-	readingInt := []int{}
+	reading := strings.Split(input[0], ",")
 	st := stateTable{0, 0, 0, 0, 0, 0, 0, 0, 0}
 
-	for _, element := range readingStr {
-		readingInt = append(readingInt, aocutils.StringToInt(element, 10))
-	}
-
-	for _, state := range readingInt {
-		st[state] = count(&readingInt, state)
+	for _, state := range reading {
+		st[aocutils.StringToInt(state, 10)] = count(&reading, state)
 	}
 
 	fmt.Println((&st).compute(days))
@@ -47,11 +42,11 @@ func (st *stateTable) compute(days int) int {
 	return st.sum()
 }
 
-func count(readingInt *[]int, element int) int {
+func count(reading *[]string, element string) int {
 
 	numCount := 0
 
-	for _, state := range *readingInt {
+	for _, state := range *reading {
 		if state == element {
 			numCount += 1
 		}
