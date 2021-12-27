@@ -1,0 +1,89 @@
+package day6
+
+import (
+	"adventofcode/aocutils"
+	"fmt"
+	"strings"
+	"sync"
+)
+
+var WG = sync.WaitGroup{}
+var mon = make(chan int)
+var ch = make(chan int, 50)
+
+type lanternFish struct {
+	// tag   string
+	isNew bool
+	timer int
+	// cycle int
+}
+
+const REPRODUCTION_CYCLE = 6
+
+var lanternFishPopulation uint = 0
+var lanternFishPopulationMonitor uint = 0
+
+func LanternFishModel(filename string, days int) {
+	input := aocutils.GetInputFromFile(filename)
+	reading := strings.Split(input[0], ",")
+
+	WG.Add(1)
+	go func(ch <-chan int) {
+		defer WG.Done()
+		monitor := true
+		for monitor {
+			select {
+			case popCount := <-ch:
+				lanternFishPopulation += uint(popCount)
+				fmt.Println(lanternFishPopulation)
+			case monCount := <-mon:
+				lanternFishPopulationMonitor += uint(monCount)
+				if lanternFishPopulationMonitor == 0 {
+					monitor = false
+					//close(ch)
+				}
+			}
+		}
+	}(ch)
+
+	for _, fishTimer := range reading {
+		WG.Add(1)
+		// go (&lanternFish{tag: uuid.NewString(), isNew: false, timer: aocutils.StringToInt(fishTimer, 10), cycle: 6}).monitor(days, 0, ch)
+		go (&lanternFish{isNew: false, timer: aocutils.StringToInt(fishTimer, 10)}).monitor(days, 0, ch)
+	}
+}
+
+// func (lf *lanternFish) create(isNew bool, timer int) {
+// 	(*lf).isNew = isNew
+// 	(*lf).timer = timer
+// 	(*lf).cycle = 6
+// }
+
+func (lf *lanternFish) monitor(days int, currentDay int, ch chan<- int) {
+
+	defer func() {
+		mon <- -1
+		WG.Done()
+	}()
+
+	// fmt.Printf("Tag: %v - Timer: %v - Is New?: %v\n", (*lf).tag, (*lf).timer, (*lf).isNew)
+	ch <- 1
+	mon <- 1
+
+	for day := currentDay; day < days; day++ {
+		//fmt.Printf("Tag: %v, Day: %02d, Timer: %v,  Is New?: %v\n", (*lf).tag, day, (*lf).timer, (*lf).isNew)
+		(*lf).timer -= 1
+		if (*lf).timer == -1 {
+			(*lf).timer = REPRODUCTION_CYCLE
+			if (*lf).isNew {
+				(*lf).isNew = !(*lf).isNew
+			}
+		}
+
+		if ((*lf).timer == REPRODUCTION_CYCLE) && (!(*lf).isNew) {
+			WG.Add(1)
+			// go (&lanternFish{tag: uuid.NewString(), isNew: true, timer: 8, cycle: 6}).monitor(days, day+1, ch)
+			go (&lanternFish{isNew: true, timer: 8}).monitor(days, day+1, ch)
+		}
+	}
+}

@@ -1,6 +1,6 @@
 package main
 
-import "adventofcode/day5"
+import "adventofcode/day6"
 
 func main() {
 
@@ -20,5 +20,9 @@ func main() {
 	// day4.BingoSubsystem("./day4/input_test.txt")
 
 	// *** Day 5
-	day5.HydrothermalVentDetection("./day5/input_test.txt")
+	// day5.HydrothermalVentDetection("./day5/input_test.txt")
+
+	// *** Day 6
+	day6.LanternFishModel("./day6/input_test.txt", 18)
+	// day6.WG.Wait()
 }
