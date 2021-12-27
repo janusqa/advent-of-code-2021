@@ -12,17 +12,14 @@ func LanternFishModel(filename string, days int) {
 	input := aocutils.GetInputFromFile(filename)
 	readingStr := strings.Split(input[0], ",")
 	readingInt := []int{}
+	st := stateTable{0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 	for _, element := range readingStr {
 		readingInt = append(readingInt, aocutils.StringToInt(element, 10))
 	}
 
-	st := stateTable{0, 0, 0, 0, 0, 0, 0, 0, 0}
-
-	for _, fish := range readingInt {
-		if st[fish] == 0 {
-			st[fish] = count(&readingInt, fish)
-		}
+	for _, state := range readingInt {
+		st[state] = count(&readingInt, state)
 	}
 
 	fmt.Println((&st).compute(days))
@@ -36,9 +33,9 @@ func (st *stateTable) compute(days int) int {
 		// fmt.Println(st)
 
 		var zeroState int
-		for i := range *st {
-			if i > 0 {
-				(*st)[i-1] = (*st)[i]
+		for state := range *st {
+			if state > 0 {
+				(*st)[state-1] = (*st)[state]
 			} else {
 				zeroState = (*st)[0]
 			}
@@ -48,15 +45,14 @@ func (st *stateTable) compute(days int) int {
 	}
 
 	return st.sum()
-
 }
 
 func count(readingInt *[]int, element int) int {
 
 	numCount := 0
 
-	for _, item := range *readingInt {
-		if item == element {
+	for _, state := range *readingInt {
+		if state == element {
 			numCount += 1
 		}
 
@@ -68,8 +64,8 @@ func (st *stateTable) sum() int {
 
 	sum := 0
 
-	for _, fish := range *st {
-		sum += fish
+	for _, fishCount := range *st {
+		sum += fishCount
 	}
 	return sum
 }
