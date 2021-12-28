@@ -1,6 +1,6 @@
 package main
 
-import "adventofcode/day6"
+import "adventofcode/day7"
 
 func main() {
 
@@ -23,6 +23,9 @@ func main() {
 	// day5.HydrothermalVentDetection("./day5/input_test.txt")
 
 	// *** Day 6
-	day6.LanternFishModel("./day6/input_test.txt", 18)
+	// day6.LanternFishModel("./day6/input_test.txt", 18)
 	// day6.WG.Wait()
+
+	// *** Day 7
+	day7.CrabController("./day7/input.txt")
 }

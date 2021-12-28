@@ -42,6 +42,16 @@ func (st *stateTable) compute(days int) int {
 	return st.sum()
 }
 
+func (st *stateTable) sum() int {
+
+	sum := 0
+
+	for _, fishCount := range *st {
+		sum += fishCount
+	}
+	return sum
+}
+
 func count(reading *[]string, element string) int {
 
 	numCount := 0
@@ -53,14 +63,4 @@ func count(reading *[]string, element string) int {
 
 	}
 	return numCount
-}
-
-func (st *stateTable) sum() int {
-
-	sum := 0
-
-	for _, fishCount := range *st {
-		sum += fishCount
-	}
-	return sum
 }
