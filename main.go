@@ -1,6 +1,8 @@
 package main
 
-import "adventofcode/day7"
+import (
+	"adventofcode/day8"
+)
 
 func main() {
 
@@ -27,5 +29,9 @@ func main() {
 	// day6.WG.Wait()
 
 	// *** Day 7
-	day7.CrabController("./day7/input.txt")
+	// day7.CrabController("./day7/input_test.txt")
+
+	// *** Day 8
+	day8.PartI("./day8/input_test.txt")
+	day8.PartII()
 }

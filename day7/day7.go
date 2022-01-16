@@ -62,6 +62,7 @@ func compute_fuel_consumption(reading *map[int]int, position int) int {
 
 			// ***New calculation adjusted for new relevation of crab tech.
 			// *** We can use a for loop here to calculate the sum of sequence 1+2+3+...+n
+			// distance_augumented := 0
 			// for i := 1; i <= distance; i++ {
 			// 	distance_augumented += i
 			// }
