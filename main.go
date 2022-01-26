@@ -1,8 +1,6 @@
 package main
 
-import (
-	"adventofcode/day8"
-)
+import "adventofcode/day9"
 
 func main() {
 
@@ -32,6 +30,9 @@ func main() {
 	// day7.CrabController("./day7/input_test.txt")
 
 	// *** Day 8
-	day8.PartI("./day8/input_test.txt")
-	day8.PartII()
+	// day8.PartI("./day8/input_test.txt")
+	// day8.PartII()
+
+	// *** Day 9
+	day9.PartI("./day9/input_test.txt")
 }
