@@ -1,41 +1,44 @@
 package main
 
-import "adventofcode/day10"
+import "adventofcode/day11"
 
 func main() {
 
 	// *** Day 1
-	// result := day1.Depths("./day1/input_test.txt")
+	// result := day1.Depths("./day01/input_test.txt")
 	// fmt.Printf("%s\n", result)
 
 	// *** Day 2
-	// result := day2.Navigate("./day2/input_test.txt")
+	// result := day2.Navigate("./day02/input_test.txt")
 	// fmt.Printf("%d\n", result)
 
 	// *** Day 3
-	// result := day3.GetPowerConsumption("./day3/input_test.txt")
+	// result := day3.GetPowerConsumption("./day03/input_test.txt")
 	// fmt.Printf("%d\n", result)
 
 	// *** Day 4
-	// day4.BingoSubsystem("./day4/input_test.txt")
+	// day4.BingoSubsystem("./day04/input_test.txt")
 
 	// *** Day 5
-	// day5.HydrothermalVentDetection("./day5/input_test.txt")
+	// day5.HydrothermalVentDetection("./day05/input_test.txt")
 
 	// *** Day 6
-	// day6.LanternFishModel("./day6/input_test.txt", 18)
+	// day6.LanternFishModel("./day06/input_test.txt", 18)
 	// day6.WG.Wait()
 
 	// *** Day 7
-	// day7.CrabController("./day7/input_test.txt")
+	// day7.CrabController("./day07/input_test.txt")
 
 	// *** Day 8
-	// day8.PartI("./day8/input_test.txt")
+	// day8.PartI("./day08/input_test.txt")
 	// day8.PartII()
 
 	// *** Day 9
-	// day9.PartI("./day9/input_test.txt")
+	// day9.PartI("./day09/input_test.txt")
 
 	// *** Day 10
-	day10.PartI("./day10/input_test.txt")
+	//day10.PartI("./day10/input_test.txt")
+
+	// *** Day 11
+	day11.PartI("./day11/input_test.txt")
 }
