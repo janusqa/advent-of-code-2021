@@ -45,6 +45,7 @@ func get_minimum_risk(cave [][]int, row int, column int, scale int) int {
 	}
 	destination := fmt.Sprintf("%d,%d", num_rows*scale-1, num_columns*scale-1)
 	pq := make(PriorityQueue, 0)
+
 	heap.Init(&pq)
 
 	item := pq_item(row, column)
@@ -82,7 +83,7 @@ func get_minimum_risk(cave [][]int, row int, column int, scale int) int {
 
 		}
 	}
-	return visited[fmt.Sprintf("%d,%d", num_rows*scale-1, num_columns*scale-1)]
+	return visited[destination]
 }
 
 func pq_item(row int, column int) *Item {
