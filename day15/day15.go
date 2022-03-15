@@ -43,6 +43,7 @@ func get_minimum_risk(cave [][]int, row int, column int, scale int) int {
 		"up":    {-1, 0},
 		"down":  {1, 0},
 	}
+	destination := fmt.Sprintf("%d,%d", num_rows*scale-1, num_columns*scale-1)
 	pq := make(PriorityQueue, 0)
 	heap.Init(&pq)
 
@@ -56,18 +57,19 @@ func get_minimum_risk(cave [][]int, row int, column int, scale int) int {
 		var risk_weight int
 
 		current_node := heap.Pop(&pq).(*Item)
+
 		if _, ok := visited[current_node.value]; !ok {
 			visited[current_node.value] = current_node.priority
-			node_id := strings.Split(current_node.value, ",")
-			row = aocutils.StringToInt(node_id[0], 10)
-			column = aocutils.StringToInt(node_id[1], 10)
-			if row == num_rows*scale-1 && column == num_columns*scale-1 {
+			current_node_id := strings.Split(current_node.value, ",")
+			current_node_row := aocutils.StringToInt(current_node_id[0], 10)
+			current_node_column := aocutils.StringToInt(current_node_id[1], 10)
+			if current_node.value == destination {
 				break
 			}
 
 			for _, child := range children {
-				row = aocutils.StringToInt(node_id[0], 10) + child[0]
-				column = aocutils.StringToInt(node_id[1], 10) + child[1]
+				row = current_node_row + child[0]
+				column = current_node_column + child[1]
 				if row < num_rows*scale && column < num_columns*scale && row >= 0 && column >= 0 {
 					item = pq_item(row, column)
 					risk_weight = get_risk_level(cave, row, column) + current_node.priority
@@ -77,6 +79,7 @@ func get_minimum_risk(cave [][]int, row int, column int, scale int) int {
 					heap.Push(&pq, item)
 				}
 			}
+
 		}
 	}
 	return visited[fmt.Sprintf("%d,%d", num_rows*scale-1, num_columns*scale-1)]
