@@ -57,6 +57,7 @@ func message_parse(message_binary string) {
 	re_length_type_1, _ := regexp.Compile(`^\d{6}1(\d{11})`)
 	packet_literal_type := "100"
 	packet_version_sum := 0
+	subpacket_stack := &customStack{stack: make([]string, 0)}
 
 	// fmt.Println("Original Message: ", message_binary)
 
@@ -66,6 +67,7 @@ func message_parse(message_binary string) {
 		packet_type := version_type[2]
 		packet_version_sum += aocutils.StringToInt(packet_version, 2)
 		fmt.Println("Version / Type: ", packet_version, " / ", packet_type)
+		subpacket_stack.Push(packet_type)
 
 		if packet_type == packet_literal_type {
 			if re_literal.MatchString(message_binary) {
@@ -74,6 +76,7 @@ func message_parse(message_binary string) {
 				literal_string = re_literal_parse.ReplaceAllString(literal_string, "$1")
 				message_binary = re_literal.ReplaceAllString(message_binary, "")
 				fmt.Println("Literal String: ", literal_string)
+				subpacket_stack.Push(literal_string)
 			}
 		} else {
 			if re_length_type_0.MatchString(message_binary) {
@@ -87,5 +90,5 @@ func message_parse(message_binary string) {
 		// fmt.Println("Message: ", message_binary)
 	}
 	fmt.Println("Packet Version Sum: ", packet_version_sum)
-
+	fmt.Println(subpacket_stack.stack)
 }
