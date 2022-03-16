@@ -14,7 +14,8 @@ func PartI(filename string) {
 
 	message_hex := "9C0141080250320F1802104A08"
 	message_binary := hex_to_binary(message_hex)
-	message_parse(message_binary)
+	packet_value := message_parse(message_binary)
+	fmt.Println(packet_value)
 }
 
 func hex_to_binary(message_hex string) string {
@@ -46,7 +47,7 @@ func hex_to_binary(message_hex string) string {
 	return message_binary
 }
 
-func message_parse(message_binary string) {
+func message_parse(message_binary string) int {
 
 	re_version_type, _ := regexp.Compile(`^(\d{3})(\d{3})`)
 	// re_literal, _ := regexp.Compile(`^(?:\d{6})(?:1(\d{4}))*0(\d{4})`) // repeat a capture group
@@ -57,7 +58,7 @@ func message_parse(message_binary string) {
 	re_length_type_1, _ := regexp.Compile(`^\d{6}1(\d{11})`)
 	packet_literal_type := "100"
 	packet_version_sum := 0
-	subpacket_stack := &customStack{stack: make([]string, 0)}
+	packets := []string{}
 
 	// fmt.Println("Original Message: ", message_binary)
 
@@ -67,7 +68,9 @@ func message_parse(message_binary string) {
 		packet_type := version_type[2]
 		packet_version_sum += aocutils.StringToInt(packet_version, 2)
 		fmt.Println("Version / Type: ", packet_version, " / ", packet_type)
-		subpacket_stack.Push(packet_type)
+		if packet_type != packet_literal_type {
+			packets = append(packets, packet_type)
+		}
 
 		if packet_type == packet_literal_type {
 			if re_literal.MatchString(message_binary) {
@@ -76,7 +79,7 @@ func message_parse(message_binary string) {
 				literal_string = re_literal_parse.ReplaceAllString(literal_string, "$1")
 				message_binary = re_literal.ReplaceAllString(message_binary, "")
 				fmt.Println("Literal String: ", literal_string)
-				subpacket_stack.Push(literal_string)
+				packets = append(packets, literal_string)
 			}
 		} else {
 			if re_length_type_0.MatchString(message_binary) {
@@ -90,5 +93,15 @@ func message_parse(message_binary string) {
 		// fmt.Println("Message: ", message_binary)
 	}
 	fmt.Println("Packet Version Sum: ", packet_version_sum)
-	fmt.Println(subpacket_stack.stack)
+	//fmt.Println(subpacket_stack.stack)
+	packet_value := compute_packet_value(packets)
+	return packet_value
+}
+
+func compute_packet_value(packets []string) int {
+
+	packet_value := 0
+	fmt.Println(packets)
+
+	return packet_value
 }
