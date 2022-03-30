@@ -57,3 +57,10 @@ func StringToInt(s string, base int) int {
 func StrLen(s string) int {
 	return utf8.RuneCountInString(s)
 }
+
+func Abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
