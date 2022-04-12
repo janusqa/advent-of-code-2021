@@ -8,7 +8,7 @@ import (
 )
 
 // This puzzle can be easily solved, or it can be a pain.  I woke up this morning and chose pain.
-// Easy way is probably to parse the stings into threes.
+// Easy way is probably to parse the stings into trees.
 // The solution below works directly with the string so it is very slow.
 
 func PartI(filename string) {
