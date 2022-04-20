@@ -64,5 +64,5 @@ func main() {
 	// day18.PartI("./day18/input_test.txt")
 
 	// *** Day 19
-	day19.PartI("./day19/input_test.txt")
+	day19.PartI("./day19/input.txt")
 }

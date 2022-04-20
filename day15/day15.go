@@ -44,8 +44,8 @@ func get_minimum_risk(cave [][]int, row int, column int, scale int) int {
 		"down":  {1, 0},
 	}
 	destination := fmt.Sprintf("%d,%d", num_rows*scale-1, num_columns*scale-1)
-	pq := make(PriorityQueue, 0)
 
+	pq := make(PriorityQueue, 0)
 	heap.Init(&pq)
 
 	item := pq_item(row, column)
