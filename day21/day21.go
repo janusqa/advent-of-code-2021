@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-type player struct {
+type Player struct {
 	position int
 	score    int
 }
@@ -13,44 +13,63 @@ type Number interface {
 	int | int8 | int16 | int32 | int64 | float32 | float64
 }
 
-func PartI(filename string) {
-	dice := 1
-	currentPlayer := 1
-	maxScore := 1000
-	boardSize := 10
-	diceSize := 100
-	chances := 3
-	countRolls := 0
-	players := make(map[int]*player)
-	players[1] = &player{10, 0}
-	players[2] = &player{9, 0}
-
-	for (*players[1]).score < maxScore && (*players[2]).score < maxScore {
-		players[currentPlayer].turn(boardSize, &dice, &countRolls, diceSize, chances)
-		fmt.Printf(
-			"Current Player: %d, dice: %d, times rolled: %d, position: %d, score: %d\n",
-			currentPlayer,
-			dice,
-			countRolls,
-			(*players[currentPlayer]).position,
-			(*players[currentPlayer]).score,
-		)
-		currentPlayer = next(currentPlayer+1, 2)
-
-	}
-	fmt.Printf("\nPart I: %d\n", min((*players[1]).score, (*players[2]).score)*(countRolls))
+type Dice interface {
+	roll(chances int) int
 }
 
-func (p *player) turn(boardSize int, dice *int, countRolls *int, diceSize int, chances int) {
-	moveBy := 0
-	currentDice := *dice
-	for i := currentDice; i <= (currentDice-1)+chances; i++ {
-		(*dice) = next((*dice)+1, diceSize)
-		(*countRolls)++
-		moveBy += i
+type DeterministicDice struct {
+	face   int
+	faces  int
+	rolls  int
+	tumble int
+}
+
+type Game struct {
+	currentPlayer int
+	maxScore      int
+	boardSize     int
+}
+
+func PartI(filename string) {
+	game := &Game{1, 1000, 10}
+	dice := &DeterministicDice{1, 100, 0, 3}
+	players := make(map[int]*Player)
+	players[1] = &Player{4, 0}
+	players[2] = &Player{8, 0}
+
+	for (*players[1]).score < (*game).maxScore && (*players[2]).score < (*game).maxScore {
+		players[(*game).currentPlayer].turn(game, dice)
+		fmt.Printf(
+			"Current Player: %d, dice: %d, times rolled: %d, position: %d, score: %d\n",
+			(*game).currentPlayer,
+			(*dice).face-1,
+			(*dice).rolls,
+			(*players[(*game).currentPlayer]).position,
+			(*players[(*game).currentPlayer]).score,
+		)
+		(*game).currentPlayer = next((*game).currentPlayer+1, 2)
+
 	}
-	(*p).position = next((*p).position+moveBy, boardSize)
+	fmt.Printf("\nPart I: %d\n", min((*players[1]).score, (*players[2]).score)*(*dice).rolls)
+}
+
+func (p *Player) turn(game *Game, dice *DeterministicDice) {
+	moveBy := dice.roll()
+	(*dice).rolls += (*dice).tumble
+	(*p).position = next((*p).position+moveBy, (*game).boardSize)
 	(*p).score += (*p).position
+}
+
+func (d *DeterministicDice) roll() int {
+	moveBy := 0
+
+	currentDice := (*d).face
+	for i := currentDice; i <= (currentDice-1)+(*d).tumble; i++ {
+		moveBy += i
+		(*d).face = next((*d).face+1, (*d).faces)
+	}
+
+	return moveBy
 }
 
 func next(item int, wrapAt int) int {
@@ -66,3 +85,8 @@ func min[T Number](a T, b T) T {
 	}
 	return b
 }
+
+// func random(lbound int, ubound int) int {
+// 	rand.Seed(time.Now().UnixNano())
+// 	return rand.Intn(ubound+1-lbound) + lbound
+// }
