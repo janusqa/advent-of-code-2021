@@ -27,7 +27,7 @@ Source: [Advent of Code Github Topic](https://github.com/topics/advent-of-code)<
 [Day 18](https://github.com/janusqa/advent-of-code-2021/tree/main/day18)<br/>
 [Day 19](https://github.com/janusqa/advent-of-code-2021/tree/main/day19)<br/>
 [Day 20](https://github.com/janusqa/advent-of-code-2021/tree/main/day20)<br/>
-[Day 21]<br/>
+[Day 21](https://github.com/janusqa/advent-of-code-2021/tree/main/day21)<br/>
 [Day 22]<br/>
 [Day 23]<br/>
 [Day 24]<br/>
