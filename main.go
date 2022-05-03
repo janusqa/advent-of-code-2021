@@ -1,6 +1,6 @@
 package main
 
-import "adventofcode/day21"
+import "adventofcode/day22"
 
 func main() {
 
@@ -37,19 +37,19 @@ func main() {
 	// day9.PartI("./day09/input_test.txt")
 
 	// *** Day 10
-	//day10.PartI("./day10/input_test.txt")
+	// day10.PartI("./day10/input_test.txt")
 
 	// *** Day 11
-	//day11.PartI("./day11/input_test.txt")
+	// day11.PartI("./day11/input_test.txt")
 
 	// *** Day 12
-	//day12.PartI("./day12/input_test.txt")
+	// day12.PartI("./day12/input_test.txt")
 
 	// *** Day 13
-	//day13.PartI("./day13/input_test.txt")
+	// day13.PartI("./day13/input_test.txt")
 
 	// *** Day 14
-	//day14.PartI("./day14/input_test.txt")
+	// day14.PartI("./day14/input_test.txt")
 
 	// *** Day 15
 	// day15.PartI("./day15/input_test.txt")
@@ -67,8 +67,11 @@ func main() {
 	// day19.PartI("./day19/input.txt")
 
 	// *** Day 20
-	//day20.PartI("./day20/input_test.txt")
+	// day20.PartI("./day20/input_test.txt")
 
 	// *** Day 21
-	day21.PartI("./day21/input_test.txt")
+	// day21.PartI("./day21/input_test.txt")
+
+	// *** Day 21
+	day22.PartI("./day22/input_test.txt")
 }

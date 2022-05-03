@@ -122,12 +122,13 @@ func quantumGame(players map[int]*Player, game *Game, chances int, memo map[stri
 				moveBy := i + j + k
 				newPosition := next((*players[(*game).currentPlayer]).position+moveBy, (*game).boardSize)
 				newScore := (*players[(*game).currentPlayer]).score + newPosition
+				nextPlayer := next((*game).currentPlayer+1, 2)
 				winners := quantumGame(
 					map[int]*Player{
-						(*game).currentPlayer:            &Player{newPosition, newScore},
-						next((*game).currentPlayer+1, 2): &Player{(*players[next((*game).currentPlayer+1, 2)]).position, (*players[next((*game).currentPlayer+1, 2)]).score},
+						(*game).currentPlayer: &Player{newPosition, newScore},
+						nextPlayer:            &Player{(*players[nextPlayer]).position, (*players[nextPlayer]).score},
 					},
-					&Game{next((*game).currentPlayer+1, 2), (*game).maxScore, (*game).boardSize},
+					&Game{nextPlayer, (*game).maxScore, (*game).boardSize},
 					chances,
 					memo,
 				)
