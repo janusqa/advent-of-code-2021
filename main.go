@@ -1,6 +1,6 @@
 package main
 
-import "adventofcode/day23"
+import "adventofcode/day24"
 
 func main() {
 
@@ -76,6 +76,9 @@ func main() {
 	// day22.PartI("./day22/input_test.txt")
 
 	// *** Day 23
-	day23.PartI("./day23/input_test.txt")
+	// day23.PartI("./day23/input_test.txt")
+
+	// *** Day 24
+	day24.PartI("./day24/input_test.txt")
 
 }
