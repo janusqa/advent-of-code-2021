@@ -70,9 +70,9 @@ func monad(instructions []string, sequenceStart int, sequenceStop int, position 
 	return 0
 }
 
-func key(pos int, w int, z int) string {
-	return fmt.Sprintf("pos=%d:w=%d:z=%d", pos, w, z)
-}
+// func key(pos int, w int, z int) string {
+// 	return fmt.Sprintf("pos=%d:w=%d:z=%d", pos, w, z)
+// }
 
 func alu(instructions []string, sequenceStart int, sequenceStop int, memory map[string]int, w int, aluCache map[string]int) {
 
