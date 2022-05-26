@@ -31,7 +31,7 @@ Source: [Advent of Code Github Topic](https://github.com/topics/advent-of-code)<
 [Day 22](https://github.com/janusqa/advent-of-code-2021/tree/main/day22)<br/>
 [Day 23](https://github.com/janusqa/advent-of-code-2021/tree/main/day23)<br/>
 [Day 24](https://github.com/janusqa/advent-of-code-2021/tree/main/day24)<br/>
-[Day 25]<br/>
+[Day 25](https://github.com/janusqa/advent-of-code-2021/tree/main/day25)<br/>
 <br/>
 Keywords: aoc adventofcode
 
