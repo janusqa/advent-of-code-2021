@@ -57,6 +57,7 @@ func PartI(filename string) {
 	fmt.Println("Part 2: ", max_manhattan)
 }
 
+// remove element from slice
 func (s *scannerList) remove(index int) {
 	// Remove element at index from slice
 	copy((*s)[index:], (*s)[index+1:])
