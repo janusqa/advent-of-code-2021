@@ -7,15 +7,15 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 You don't need a computer science background to participate - just a little programming knowledge and some problem solving skills will get you pretty far. Nor do you need a fancy computer; every problem has a solution that completes in at most 15 seconds on ten-year-old hardware.<br/>
 Source: [Advent of Code Github Topic](https://github.com/topics/advent-of-code)<br/>
 
-[Day 01](https://github.com/janusqa/advent-of-code-2021/tree/main/day1)<br/>
-[Day 02](https://github.com/janusqa/advent-of-code-2021/tree/main/day2)<br/>
-[Day 03](https://github.com/janusqa/advent-of-code-2021/tree/main/day3)<br/>
-[Day 04](https://github.com/janusqa/advent-of-code-2021/tree/main/day4)<br/>
-[Day 05](https://github.com/janusqa/advent-of-code-2021/tree/main/day5)<br/>
-[Day 06](https://github.com/janusqa/advent-of-code-2021/tree/main/day6)<br/>
-[Day 07](https://github.com/janusqa/advent-of-code-2021/tree/main/day7)<br/>
-[Day 08](https://github.com/janusqa/advent-of-code-2021/tree/main/day8)<br/>
-[Day 09](https://github.com/janusqa/advent-of-code-2021/tree/main/day9)<br/>
+[Day 01](https://github.com/janusqa/advent-of-code-2021/tree/main/day01)<br/>
+[Day 02](https://github.com/janusqa/advent-of-code-2021/tree/main/day02)<br/>
+[Day 03](https://github.com/janusqa/advent-of-code-2021/tree/main/day03)<br/>
+[Day 04](https://github.com/janusqa/advent-of-code-2021/tree/main/day04)<br/>
+[Day 05](https://github.com/janusqa/advent-of-code-2021/tree/main/day05)<br/>
+[Day 06](https://github.com/janusqa/advent-of-code-2021/tree/main/day06)<br/>
+[Day 07](https://github.com/janusqa/advent-of-code-2021/tree/main/day07)<br/>
+[Day 08](https://github.com/janusqa/advent-of-code-2021/tree/main/day08)<br/>
+[Day 09](https://github.com/janusqa/advent-of-code-2021/tree/main/day09)<br/>
 [Day 10](https://github.com/janusqa/advent-of-code-2021/tree/main/day10)<br/>
 [Day 11](https://github.com/janusqa/advent-of-code-2021/tree/main/day11)<br/>
 [Day 12](https://github.com/janusqa/advent-of-code-2021/tree/main/day12)<br/>
